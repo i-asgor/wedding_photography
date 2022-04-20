@@ -16,6 +16,16 @@ const Login = () => {
         error,
       ] = useSignInWithEmailAndPassword(auth);
 
+
+      let customerror;
+      if (error) {
+        customerror = (
+          <div>
+            <p className='text-danger'>Error: {error.message}</p>
+          </div>
+        );
+      }
+
     const handleLogin = (e) => {
         e.preventDefault();
         const email = e.target.email.value;
@@ -47,6 +57,7 @@ const Login = () => {
                     <Form.Label>Password</Form.Label>
                     <Form.Control type="password" name='password' placeholder="Password" />
                 </Form.Group>
+                {customerror}
                 <Button variant="primary" type="submit">
                     Login
                 </Button>
