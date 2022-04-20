@@ -1,7 +1,15 @@
 import React from 'react';
 import { Button, Form } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
 
 const Login = () => {
+
+
+
+    
+
+
+
     return (
         <div className='container w-50 mx-auto py-3'>
             <h1 className='text-center'>Login</h1>
@@ -18,13 +26,11 @@ const Login = () => {
                     <Form.Label>Password</Form.Label>
                     <Form.Control type="password" placeholder="Password" />
                 </Form.Group>
-                <Form.Group className="mb-3" controlId="formBasicCheckbox">
-                    <Form.Check type="checkbox" label="Check me out" />
-                </Form.Group>
                 <Button variant="primary" type="submit">
-                    Submit
+                    Login
                 </Button>
             </Form>
+            <p>New to Wedding Photography? <Link to='/register' className='text-primary text-decoration-none' >Please Register</Link></p>
         </div>
     );
 };

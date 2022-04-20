@@ -1,7 +1,24 @@
 import React from 'react';
 import { Button, Form } from 'react-bootstrap';
+import { useCreateUserWithEmailAndPassword } from 'react-firebase-hooks/auth';
+import { Link } from 'react-router-dom';
+import auth from '../../../firebase.init';
 
 const Registration = () => {
+
+    const [
+        createUserWithEmailAndPassword,
+        user,
+        loading,
+        error,
+      ] = useCreateUserWithEmailAndPassword(auth);
+
+      const handleRegistration = (e) => {
+        e.preventDefault();
+        console.log("clicked")
+      }
+
+
     return (
         <div className='container w-50 mx-auto py-3'>
             <h1 className='text-center'>Registration</h1>
@@ -22,10 +39,11 @@ const Registration = () => {
                 <Form.Group className="mb-3" controlId="formBasicCheckbox">
                     <Form.Check type="checkbox" label="Check me out" />
                 </Form.Group>
-                <Button variant="primary" type="submit">
+                <Button variant="primary" onClick={handleRegistration} type="submit">
                     Registration
                 </Button>
             </Form>
+            <p>Are you already an Account? <Link to='/login' className='text-primary text-decoration-none'>Please Login</Link></p>
         </div>
     );
 };
